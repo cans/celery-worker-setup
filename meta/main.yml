@@ -1,0 +1,27 @@
+galaxy_info:
+  author: Nicolas CANIART
+  description: Setup celery workers managed by systemd
+
+  issue_tracker_url: https://github.com/cans/celery-worker-setup/issues
+  license: GPLv2
+  min_ansible_version: 1.2
+
+  # If this a Container Enabled role, provide the minimum Ansible Container version.
+  # min_ansible_container_version:
+
+  github_branch: master
+
+  platforms:
+  - name: Debian
+    versions:
+    - jessie
+    - stretch
+    - sid
+
+  galaxy_tags:
+  - python
+  - celery
+  - setup
+  - systemd
+
+dependencies: []

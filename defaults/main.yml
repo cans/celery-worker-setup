@@ -1,0 +1,15 @@
+---
+celeryw_app: "{{omit}}"
+celeryw_app_variable: "app"
+celeryw_become: false
+celeryw_bin: "/usr/bin/celery"
+celeryw_conf_dir: "/etc/celery"
+celeryw_daemon_options: ""
+celeryw_log_dir: "/var/log/celery"
+celeryw_log_filename: "%n%I.log"
+celeryw_log_level: "ERROR"
+celeryw_pid_filename: "%n.pid"
+celeryw_queues:
+  - "celery"
+celeryw_run_dir: "/var/run/celery"
+celeryw_worker_unit: "roles/cans.celery-worker-setup/templates/celery-worker.service"

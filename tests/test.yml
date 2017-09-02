@@ -1,0 +1,29 @@
+---
+- hosts: servers
+  remote_user: root
+  vars:
+    all_defaults_worker:
+      - app_name: "someworker"
+        app_module: "some.python.module"
+  roles:
+    - celery-worker-setup
+      celeryw_workers: "{{all_defaults_workers}}"
+
+  tasks:
+    - include_vars:
+      file: ../defaults/main.yml      
+      name: cws_defaults
+
+    - name: Ensure workers defaults are taken into consideration
+      lineinfile:
+        line: '{{item.variable}}="{{item.value}}"'
+        path: "{{cws_defaults.celeryw_conf_dir}}/{{all_defaults_worker.app_name}}"
+        state: "present"
+      with_items:
+        - value: "{{all_defaults_worker.app_name}}"
+          variable: "CELERYD_QUEUES"
+        - value: "{{all_defaults_worker.app_name}}"
+          variable: "CELERYD_NODES"
+        - value: "{{all_defaults_worker.celeryw_bin}}"
+          variable: "CELERYD_BIN"
+

@@ -1,0 +1,10 @@
+---
+- name: "Create Celery configuration file(s)"
+  template:
+    src: "worker.conf"
+    dest: "{{celeryw_conf_dir}}/{{item.app_name}}"
+  with_items: "{{ celeryw_workers }}"
+  become: "{{ celeryw_become| default(omit) }}"
+
+
+# vim: et:sw=2:syntax=yaml:ts=2:
