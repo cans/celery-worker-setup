@@ -1,0 +1,15 @@
+"/var/log/celery/*.log" "/var/log/celery/*/*.log" {
+    daily
+    rotate 1
+    missingok
+    compress
+    delaycompress
+    copytruncate
+    notifempty
+    sharedscripts
+    postrotate
+        test -s /run/rsyslogd.pid && kill -KILL $(cat /run/rsyslogd.pid)
+        # postrotate script should always return 0
+        true
+    endscript
+}
