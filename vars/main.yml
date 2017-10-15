@@ -1,0 +1,5 @@
+---
+celeryw_rsyslog_configuration_templates:
+  - "roles/cans.celery-workers-setup/templates/rsyslog/12-celery-workers.conf"
+celeryw_rsyslog_logrotate_configuration_templates:
+  - "roles/cans.celery-workers-setup/templates/logrotate/celery"
